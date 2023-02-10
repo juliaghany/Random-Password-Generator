@@ -1,35 +1,58 @@
 // Assignment Code
 
-var numberCharacters = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var lowerCaseCharacters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var upperCaseCharacters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var specialCharacters = ["&", "!", "$", "(", ")", "*", "+", "-", "/", ":", "=", "?", ">", "<", "@"];
+// Create strings with availiable numerical, alphabetical, and special characters
 
+var numberChar = "0123456789"
+var lowercaseChar = "abcdefghijklmnopqrstuvwxyz"
+var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var specialChar = "&!$()*+-:?@/>';[^],.="
 
 var generateBtn = document.querySelector("#generate");
 
 // write functions here 
 
-// Write password to the #password input
+// Write password to the #password input 
+
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 
 }
-// Do I need to add another part to the function that pertains to whether or not the user selects cancel? 
+
+// We learned about event.preventDefault() yesterday, should we add that to this? 
+
+//Function that generates the password: begins by asking how many characters the user would like
+//then asks the user if they would like to include numbers, lowercase letters, uppercase letters, and/or special characters
+
 function generatePassword() {
-  var numberOfCharacters = prompt("How many characters would you like in your password?")
-  var useNumbers = prompt("Would you like to use numbers?")
-  var useLowerCase = prompt("Would you like to use lower case letters?")
-  var useUpperCase = prompt("Would you like to use upper case letters?")
-  var useSpecialCharacters = prompt("Would you like to use special characters?")
+  var lengthOfPassword = prompt("How many characters would you like your password to have? You must choose a number between 8 and 128.");
+  if (lengthOfPassword = undefined || lengthOfPassword < 8 || lengthOfPassword > 128) {
+    alert("You've either chosen a number less than 8, chosen a number greater than 128, or did not enter a number at all. Please choose a number between 8 and 128.");
+    prompt("Choose a number between 8 and 128 to set the length for your password.");
+  };
+  var numberChar = confirm("Would you like to include numbers in your password?");
+  var lowercaseChar = confirm("Would you like to include lowercase letters in your password?");
+  var uppercaseChar = confirm("Would you like to include uppercase letters in your password?");
+  var specialChar = confirm("Would you like to include special characters in your password?");
+
+  // Use the comparsion operator "strictly equal" and logical operator "&&" to create an if/then statement in case user did not choose any criteria
+
+  if (numberChar === false && lowercaseChar === false && uppercaseChar === false && specialChar === false) {
+    alert("Because you canceled all criteria options, a password cannot be generated for you. Please choose at least one criteria.")
+  }
+
 }
+
 
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+
+
+
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
 
 //Create arrays for each type of characters--numbers, uppers, lowers, special (x)
 //Prompt the user for input about # and types of characters (x)
