@@ -36,7 +36,7 @@ function generatePassword() {
   // Use logical operator || which evaluates to true if either the input is greater than 8 or less than 128. Return will end the function execution 
 
   if (lengthOfPassword < 8 || lengthOfPassword > 128) {
-    alert("You've either chosen a number that is less than 8, chosen a number that is greater than 128, or  did not enter anything at all. Please try again.");
+    alert("You've either chosen a number that is less than 8, chosen a number that is greater than 128, or did not enter anything at all. Please try again.");
     return
   };
 
