@@ -15,48 +15,45 @@ var generateBtn = document.querySelector("#generate");
 
 function writePassword() {
   var password = generatePassword();
+
+// Add if statement with return to stop the function if user does not define a character length or any characters
+
+  if (password === undefined) {
+    return
+  }
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 
 }
 
-// We learned about event.preventDefault() yesterday, should we add that to this? 
-
-//Function that generates the password: begins by asking how many characters the user would like
-//then asks the user if they would like to include numbers, lowercase letters, uppercase letters, and/or special characters
+// Function that generates the password: begins by asking how many characters the user would like
+// then asks the user if they would like to include numbers, lowercase letters, uppercase letters, and/or special characters
 
 function generatePassword() {
   var lengthOfPassword = prompt("How many characters would you like your password to have? You must choose a number between 8 and 128.");
-  if (lengthOfPassword = undefined || lengthOfPassword < 8 || lengthOfPassword > 128) {
-    alert("You've either chosen a number less than 8, chosen a number greater than 128, or did not enter a number at all. Please choose a number between 8 and 128.");
-    prompt("Choose a number between 8 and 128 to set the length for your password.");
+
+// Use if/then statement to alert user if they do not choose a number between 8 or 128, also alerts user if they do not input anything at all. 
+// Use logical operator || which evaluates to true if either the input is greater than 8 or less than 128. Return will end the function execution 
+
+  if (lengthOfPassword < 8 || lengthOfPassword > 128) {
+    alert("You've either chosen a number that is less than 8, chosen a number that is greater than 128, or  did not enter anything at all. Please try again.");
+    return
   };
-  var numberChar = confirm("Would you like to include numbers in your password?");
-  var lowercaseChar = confirm("Would you like to include lowercase letters in your password?");
-  var uppercaseChar = confirm("Would you like to include uppercase letters in your password?");
-  var specialChar = confirm("Would you like to include special characters in your password?");
 
-  // Use the comparsion operator "strictly equal" and logical operator "&&" to create an if/then statement in case user did not choose any criteria
+  var wantsNumberChar = confirm("Would you like to include numbers in your password?");
+  var wantsLowercaseChar = confirm("Would you like to include lowercase letters in your password?");
+  var wantsUppercaseChar = confirm("Would you like to include uppercase letters in your password?");
+  var wantsSpecialChar = confirm("Would you like to include special characters in your password?");
 
-  if (numberChar === false && lowercaseChar === false && uppercaseChar === false && specialChar === false) {
-    alert("Because you canceled all criteria options, a password cannot be generated for you. Please choose at least one criteria.")
+// Use the comparsion operator "strictly equal" and logical operator "&&" to create an if/then statement in case user did not choose any criteria
+
+  if (wantsNumberChar === false && wantsLowercaseChar === false && wantsUppercaseChar === false && wantsSpecialChar === false) {
+    alert("Because you canceled all criteria options, a password cannot be generated for you. Please try again.")
   }
+
 
 }
 
-
-
 // Add event listener to generate button
+
 generateBtn.addEventListener("click", writePassword);
-
-
-
-
-//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
-
-//Create arrays for each type of characters--numbers, uppers, lowers, special (x)
-//Prompt the user for input about # and types of characters (x)
-//Capture those inputs in variables (x)
-//Create a pool of characters to use based on each response--so if/then statements with each response/answer, use.concat to add chosen character pools to master array
-//Use a for loop that loops the number of characters chosen by the student and at each iteration use Math.floor(Math.random for the index of the master array to choose a random character and add it to the password string
-//After the loop, return the generated password.
