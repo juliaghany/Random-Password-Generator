@@ -37,7 +37,7 @@ function generatePassword() {
 
   if (lengthOfPassword < 8 || lengthOfPassword > 128) {
     alert("You've either chosen a number that is less than 8, chosen a number that is greater than 128, or did not enter anything at all. Please try again.");
-    return
+    return generatePassword()
   };
 
   var wantsNumberChar = confirm("Would you like to include numbers in your password?");
@@ -49,7 +49,7 @@ function generatePassword() {
 
   if (wantsNumberChar === false && wantsLowercaseChar === false && wantsUppercaseChar === false && wantsSpecialChar === false) {
     alert("Because you canceled all criteria options, a password cannot be generated for you. Please try again.")
-    return
+    return generatePassword()
   }
 
   // Create empty string to combine strings into passwordBase based on user input regarding criteria 
@@ -58,19 +58,19 @@ function generatePassword() {
   var passwordBase = ""
 
 
-  if (wantsNumberChar === true) {
+  if (wantsNumberChar) {
     passwordBase += numberChar
   }
 
-  if (wantsLowercaseChar === true) {
+  if (wantsLowercaseChar) {
     passwordBase += lowercaseChar
   }
 
-  if (wantsUppercaseChar === true) {
+  if (wantsUppercaseChar) {
     passwordBase += uppercaseChar
   }
 
-  if (wantsSpecialChar === true) {
+  if (wantsSpecialChar) {
     passwordBase += specialChar
   }
 
