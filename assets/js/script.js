@@ -49,6 +49,7 @@ function generatePassword() {
 
   if (wantsNumberChar === false && wantsLowercaseChar === false && wantsUppercaseChar === false && wantsSpecialChar === false) {
     alert("Because you canceled all criteria options, a password cannot be generated for you. Please try again.")
+    return
   }
 
   // Create empty string to combine strings into passwordBase based on user input regarding criteria 
