@@ -16,7 +16,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
 
-// Add if statement with return to stop the function if user does not define a character length or any characters
+  // Add if statement with return to stop the function if user does not define a character length or any characters
 
   if (password === undefined) {
     return
@@ -32,8 +32,8 @@ function writePassword() {
 function generatePassword() {
   var lengthOfPassword = prompt("How many characters would you like your password to have? You must choose a number between 8 and 128.");
 
-// Use if/then statement to alert user if they do not choose a number between 8 or 128, also alerts user if they do not input anything at all. 
-// Use logical operator || which evaluates to true if either the input is greater than 8 or less than 128. Return will end the function execution 
+  // Use if/then statement to alert user if they do not choose a number between 8 or 128, also alerts user if they do not input anything at all. 
+  // Use logical operator || which evaluates to true if either the input is greater than 8 or less than 128. Return will end the function execution 
 
   if (lengthOfPassword < 8 || lengthOfPassword > 128) {
     alert("You've either chosen a number that is less than 8, chosen a number that is greater than 128, or  did not enter anything at all. Please try again.");
@@ -45,14 +45,14 @@ function generatePassword() {
   var wantsUppercaseChar = confirm("Would you like to include uppercase letters in your password?");
   var wantsSpecialChar = confirm("Would you like to include special characters in your password?");
 
-// Use the comparsion operator "strictly equal" and logical operator "&&" to create an if/then statement in case user did not choose any criteria
+  // Use the comparsion operator "strictly equal" and logical operator "&&" to create an if/then statement in case user did not choose any criteria
 
   if (wantsNumberChar === false && wantsLowercaseChar === false && wantsUppercaseChar === false && wantsSpecialChar === false) {
     alert("Because you canceled all criteria options, a password cannot be generated for you. Please try again.")
   }
 
-// Create empty string to combine strings into passwordBase based on user input regarding criteria 
-// Use += to combine the string to empty string if the user selected that criteria 
+  // Create empty string to combine strings into passwordBase based on user input regarding criteria 
+  // Use += to combine the string with the empty string if the user selected that criteria 
 
   var passwordBase = ""
 
@@ -73,19 +73,19 @@ function generatePassword() {
     passwordBase += specialChar
   }
 
-// Create empty string for final password  
+  // Create empty string for final password  
 
   var pass = ""
 
-// Create for-loop to randomly selet characters from passwordBase 
+  // Create for-loop to randomly selet characters from passwordBase 
 
   for (var i = 0; i < lengthOfPassword; i++) {
     var randomChar = passwordBase[Math.floor(Math.random() * passwordBase.length)]
     pass += randomChar
   }
 
-// return the randomly generated final password 
-  
+  // End generatePassword function and return the randomly generated final password 
+
   return pass
 }
 
