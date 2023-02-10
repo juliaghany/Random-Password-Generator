@@ -73,7 +73,20 @@ function generatePassword() {
     passwordBase += specialChar
   }
 
+// Create empty string for final password  
 
+  var pass = ""
+
+// Create for-loop to randomly selet characters from passwordBase 
+
+  for (var i = 0; i < lengthOfPassword; i++) {
+    var randomChar = passwordBase[Math.floor(Math.random() * passwordBase.length)]
+    pass += randomChar
+  }
+
+// return the randomly generated final password 
+  
+  return pass
 }
 
 // Add event listener to generate button
