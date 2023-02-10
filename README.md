@@ -1,6 +1,6 @@
 # Random Password Generator
 
-
+![Alt text](assets/images/screenshot-1.JPG)
 
 ## Description 
 
