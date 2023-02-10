@@ -51,6 +51,28 @@ function generatePassword() {
     alert("Because you canceled all criteria options, a password cannot be generated for you. Please try again.")
   }
 
+// Create empty string to combine strings into passwordBase based on user input regarding criteria 
+// Use += to combine the string to empty string if the user selected that criteria 
+
+  var passwordBase = ""
+
+
+  if (wantsNumberChar === true) {
+    passwordBase += numberChar
+  }
+
+  if (wantsLowercaseChar === true) {
+    passwordBase += lowercaseChar
+  }
+
+  if (wantsUppercaseChar === true) {
+    passwordBase += uppercaseChar
+  }
+
+  if (wantsSpecialChar === true) {
+    passwordBase += specialChar
+  }
+
 
 }
 
